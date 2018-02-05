@@ -34,10 +34,10 @@ public class ShapePanel extends JPanel
 		window.setFont(new Font("TAHOMA",Font.BOLD,18));
 		window.drawString("CREATE YOUR OWN SHAPE!",40,40);
 
-
+		
 		//instantiate a Shape
 		//tell your shape to draw
-		/*window.setColor(Color.BLACK);
+		window.setColor(Color.BLACK);
 		window.drawRect(40, 90, 50, 70);
 		window.fillRect(40, 90, 50, 70);
 		//instantiate a Shape
@@ -69,8 +69,16 @@ public class ShapePanel extends JPanel
 		window.drawRect(320, 200, 80, 50);
 		window.fillRect(320, 200, 80, 50);
 		
-		window.setColor(Color.GREEN);
-		window.drawRect(240, 390, 250, 70);
-		window.fillRect(240, 390, 250, 70);*/
+	//	window.setColor(Color.GREEN);
+		//window.drawRect(240, 390, 250, 70);
+		//window.fillRect(240, 390, 250, 70);
+		
+		int[] xPoints = { 160, 170, 190, 600};
+		int[] yPoints = { 80, 160, 120, 400};
+		
+		window.setColor(Color.PINK);
+		window.drawPolygon(xPoints, yPoints, 4);
+		window.fillPolygon(xPoints, yPoints, 4);
+		
 	}
 }

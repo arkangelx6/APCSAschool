@@ -16,6 +16,8 @@ public class GraphicsRunner extends JFrame
 		setSize(WIDTH,HEIGHT);
 
 		getContentPane().add(new ShapePanel());
+		
+		//getContentPane().add(new SmileyFace());
 
 		setVisible(true);
 	}
@@ -23,6 +25,6 @@ public class GraphicsRunner extends JFrame
 	public static void main( String args[] )
 	{
 		GraphicsRunner run = new GraphicsRunner();
-		Robot robot = new Robot();
+		
 	}
 }
