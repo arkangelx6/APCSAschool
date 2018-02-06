@@ -1,4 +1,4 @@
-package Unit2;
+package Unit2.exercise;
 
 public class Average
 {
