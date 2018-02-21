@@ -45,9 +45,6 @@ public class GuessingGame
 			System.out.println("You guessed wrong " + percentage + "% of the time.");
 		
 
-
-
-
 	}
 
 	public String toString()
