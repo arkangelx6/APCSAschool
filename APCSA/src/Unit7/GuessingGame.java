@@ -33,15 +33,13 @@ public class GuessingGame
 		
 			System.out.println("Incorrect");
 			counter++;
-			
+			System.out.println("Guess a number between 1 and " + upperBound);
 			x = keyboard.nextInt();
 		}
 			System.out.println("Correct");
 			System.out.println("It took you " + counter + " guesses to guess " + random2);
-			double percentage =  (double)counter/upperBound*100;
-			if(counter == 0){
-				percentage = 0;
-			}
+			double percentage =  (double)(counter-1)/upperBound*100;
+			
 			System.out.println("You guessed wrong " + percentage + "% of the time.");
 		
 
