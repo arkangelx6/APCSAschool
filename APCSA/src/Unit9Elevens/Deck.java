@@ -38,14 +38,14 @@ public class Deck {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
 			//cards[i] = {rank[i], suits[i], values[i]};
-		int counter = 0;
-		//Card[] cards = new Card[ranks.length];
+		//int counter = 0;
+		Card[] cards = new Card[ranks.length];
 			for(int i = 0; i< suits.length; i++){
 				
 				for(int j = 0; j< ranks.length; j++){
 					Card a = new Card(ranks[j], suits[i], values[j]);
 					cards[counter] = a;
-					counter++;
+					//counter++;
 				}
 			}
 		
