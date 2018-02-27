@@ -36,10 +36,18 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		cards[size];
-		for(int i = 0; i < size; i++){
-			cards[i] = {rank[i], suits[i], values[i]};
-		}
+		
+			//cards[i] = {rank[i], suits[i], values[i]};
+		int counter = 0;
+		//Card[] cards = new Card[ranks.length];
+			for(int i = 0; i< suits.length; i++){
+				
+				for(int j = 0; j< ranks.length; j++){
+					Card a = new Card(ranks[j], suits[i], values[j]);
+					cards[counter] = a;
+					counter++;
+				}
+			}
 		
 	}
 
@@ -63,6 +71,8 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
+		size = cards.length;
+		return cards.length;
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
 	}
@@ -81,6 +91,14 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
+		
+		if(isEmpty()){
+			return null;
+		}
+		else{
+			size--;
+		return cards[size];
+		}
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}
 
