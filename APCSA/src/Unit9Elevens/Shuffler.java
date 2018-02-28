@@ -1,5 +1,7 @@
 package Unit9Elevens;
 
+import java.util.Random;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -53,6 +55,23 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int k = 0;
+		for(int j = 0; j< (values.length+1)/2; j++){
+			shuffled[k] = values[j];
+			k = k +2;
+			//System.out.println(k);
+		}
+		k = 1;
+		for(int l = (values.length+1)/2; l< values.length; l++){
+			shuffled[k] = values[l];;
+			k = k +2;
+			//System.out.println(k);
+		}
+		for(int o = 0; o < values.length; o++){
+			values[o] = shuffled[o];
+			
+			}
 	}
 
 	/**
@@ -68,5 +87,20 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		Random rand = new Random();
+		for(int i = 0; i < values.length; i++){
+			int n = rand.nextInt(values.length);
+			System.out.println(n);s
+			if(shuffled[i] == 0){
+			shuffled[i] = values[n];
+			}
+		}
+		
+		for(int o = 0; o < values.length; o++){
+		values[o] = shuffled[o];
+		
+		}
+		
 	}
 }

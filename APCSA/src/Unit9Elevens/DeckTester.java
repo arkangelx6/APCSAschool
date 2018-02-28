@@ -15,7 +15,10 @@ public class DeckTester {
 		String[] suits = {"blue", "red"};
 		int[] pointValues = {11, 12, 13};
 		Deck d = new Deck(ranks, suits, pointValues);
-		d.deal();
+		System.out.println(d.deal());
+		System.out.println(d.deal());
+		System.out.println(d.deal());
+		System.out.println(d.deal());
 		
 	}
 }

@@ -2,6 +2,7 @@ package Unit9Elevens;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The Deck class represents a shuffled deck of cards.
@@ -38,17 +39,22 @@ public class Deck {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
 			//cards[i] = {rank[i], suits[i], values[i]};
-		//int counter = 0;
-		Card[] cards = new Card[ranks.length];
+		int counter = 0;
+		cards = new Card[ranks.length*suits.length];
 			for(int i = 0; i< suits.length; i++){
 				
 				for(int j = 0; j< ranks.length; j++){
 					Card a = new Card(ranks[j], suits[i], values[j]);
 					cards[counter] = a;
-					//counter++;
+					//System.out.println(cards[counter]);
+					//System.out.println(counter);
+					counter++;
+					
+					
 				}
 			}
-		
+		size = cards.length;
+		//System.out.println(size);
 	}
 
 
@@ -71,7 +77,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		size = cards.length;
+		//size = cards.length;
 		return cards.length;
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
@@ -97,8 +103,10 @@ public class Deck {
 		}
 		else{
 			size--;
+			
 		return cards[size];
 		}
+		
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 	}
 
