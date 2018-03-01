@@ -1,6 +1,7 @@
 package Unit9Elevens;
 
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -77,7 +78,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		//size = cards.length;
+		
 		return cards.length;
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
@@ -89,6 +90,17 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		Card holder;
+		Random rand = new Random();
+		for(int i = 0; i < cards.length; i++){
+			int n = rand.nextInt(cards.length);
+			//System.out.println(n);
+			holder = cards[n];
+			cards[n] = cards[i];
+			cards[i] = holder;
+		}
+		size = cards.length;
+		
 	}
 
 	/**

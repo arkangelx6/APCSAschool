@@ -88,19 +88,43 @@ public class Shuffler {
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
 		int[] shuffled = new int[values.length];
+		int holder = 0;
 		Random rand = new Random();
 		for(int i = 0; i < values.length; i++){
 			int n = rand.nextInt(values.length);
-			System.out.println(n);s
-			if(shuffled[i] == 0){
+			System.out.println(n);
+			holder = values[n];
+			values[n] = values[i];
+			values[i] = holder;
+			
+			/*if(shuffled[i] == 0){
 			shuffled[i] = values[n];
-			}
+			shuffled[n] = values[i];
+			}*/
 		}
 		
-		for(int o = 0; o < values.length; o++){
-		values[o] = shuffled[o];
+	/*	for(int o = 0; o < values.length; o++){
+		//values[o] = shuffled[o];
 		
-		}
+		}*/
 		
 	}
+	public static String flip(){
+		
+	Random rand = new Random();
+	int n = rand.nextInt(2);
+		String heads = "heads";
+		String tails = "tails";
+	if(n == 0 || n ==1){
+		return heads;
+	}
+	else{
+		return tails;
+	}
+		
+		
+		
+		
+	}
+	
 }
