@@ -19,6 +19,8 @@ public class Shuffler {
 	 * @param args is not used.
 	 */
 	public static void main(String[] args) {
+		for(int i = 0; i < 20; i++){
+		
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
 		int[] values1 = {0, 1, 2, 3};
@@ -34,7 +36,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {1, 2, 3, 4};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -45,7 +47,7 @@ public class Shuffler {
 		}
 		System.out.println();
 	}
-
+	}
 
 	/**
 	 * Apply a "perfect shuffle" to the argument.
