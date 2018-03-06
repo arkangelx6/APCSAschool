@@ -25,23 +25,25 @@ public class MadLib
 			loadVerbs();
 			loadAdjectives();
 	}
-
+	String mad;
 	public MadLib(String fileName)
 	{
+		verbs = new ArrayList<String>();
+		nouns = new ArrayList<String>();
+		adjectives = new ArrayList<String>();
 		//load stuff
 		loadNouns();
 		loadVerbs();
 		loadAdjectives();
 		
-		
-		
+		//System.out.println(nouns.size());
 		
 		try{
 			Scanner file = new Scanner(new File(fileName));
-			String mad = "";
+			mad = "";
 			while(file.hasNext()){
 				
-				String  x = file.next();
+				String x = file.next();
 				if(x.equals("#")){
 				
 					mad = mad + getRandomNoun();
@@ -56,7 +58,9 @@ public class MadLib
 				}
 				
 				else{
+					
 					mad = mad + x;
+					
 				}
 				
 				
@@ -84,8 +88,10 @@ public class MadLib
 		try{
 		
 			Scanner noun = new Scanner(new File("nouns.dat"));
-		
-		
+			while(noun.hasNext()){
+				nouns.add(noun.next());
+			}
+			
 		
 		}
 		catch(Exception e)
@@ -100,8 +106,10 @@ public class MadLib
 	
 	
 			Scanner verb = new Scanner(new File("verbs.dat"));
-	
-	
+			while(verb.hasNext()){
+				verbs.add(verb.next());
+			}
+			
 		}
 		catch(Exception e)
 		{
@@ -114,7 +122,9 @@ public class MadLib
 	
 	
 			Scanner adjective = new Scanner(new File("adjectives.dat"));
-	
+			while(adjective.hasNext()){
+				adjectives.add(adjective.next());
+			}
 	
 		}
 		catch(Exception e)
@@ -144,6 +154,7 @@ public class MadLib
 
 	public String toString()
 	{
-	   return ;
+		
+	   return mad;
 	}
 }
