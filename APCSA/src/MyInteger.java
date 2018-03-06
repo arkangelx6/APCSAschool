@@ -70,12 +70,8 @@ public class MyInteger {
 	}
 	
 	public static int parseInt(char[] x){
-		int total = 0;
-		for(char num : x){
-			total = total + num ;
-		}
-		return total;
-		
+		x.toString();
+		return value;
 	}
 	public static int parseInt(String s){
 	
