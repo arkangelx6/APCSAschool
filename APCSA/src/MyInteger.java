@@ -8,6 +8,8 @@ public class MyInteger {
 		System.out.println(isPrime(num));
 		char[] num1 = {1,2,3,4,5};
 		System.out.println(parseInt(num1));
+		String numbers = "12345";
+		System.out.println(parseInt(numbers));
 	}
 	
 	int value;
@@ -58,22 +60,26 @@ public class MyInteger {
 	public static boolean isPrime(MyInteger x){
 		return MyInteger.isPrime(x);
 	}
-	public boolean equals(int v, int x){
-		if(v == x){
-			return true;
-		}
-		return false;
+	public boolean equals(int v){
+		return value == v;
 		
 	}
-	public static boolean equals(MyInteger v, MyInteger x){
-		return MyInteger.equals(v, x);
+	public static boolean equals(MyInteger v){
+		return MyInteger.equals(v);
 	}
 	
 	public static int parseInt(char[] x){
-		x.toString();
-		return value;
+		int number = 0;
+		int exp = 0;
+		for(int i = x.length-1; i>= 0; i--){
+			number += Math.pow(10, exp) * (x[i]-48);
+			exp++;
+		}
+		
+		return number;
 	}
 	public static int parseInt(String s){
-	
+		char[] numbers = s.toCharArray();
+		return parseInt(numbers);	
 	}
 }

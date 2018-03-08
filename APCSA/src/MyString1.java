@@ -12,7 +12,7 @@ public class MyString1 {
 	
 
 	 //char[] s = new char[0];
-	static char[] s = {'A','B','C','D'};
+	char[] s = {'A','B','C','D'};
 		public MyString1(char[] chars){
 			
 		s = chars;
@@ -58,15 +58,20 @@ public class MyString1 {
 		public boolean equals(MyString1 s){
 			int test = 0;
 			for(int i = 0; i < s.getCharacters().length; i++){
-				if(this.getCharacters() == s.getCharacters()){
+				if(this.getCharacters()[i] == s.getCharacters()[i]){
 					test++;
 				}
 			}
-			
+			if(test== s.getCharacters().length){
+				return true;
+			}
 			return false;
 			
 		}
-		public static MyString1 valueOf(int i){
+		public char[] getCharacters(){
+			return s;
+		}
+		public static MyString1 valueOf(int num){
 			
 			int len = 0;
 			while(num>0){
@@ -79,14 +84,23 @@ public class MyString1 {
 			
 			for(int i = x.length-1; i > 0; i--){
 				
-				x[i] = (char) num %10+48;
+				x[i] = (char) (num %10+48);
+				num = num/10;
 				
 			}
 			
+			MyString1 newString = new MyString1(x);
 			
+			return newString;
 			
-			return ;
+		}
+		public String toString(){
+			String newString = "";
+			for(char c : s){
+				newString += c;
+			}
 			
+			return newString;
 		}
 
 }
