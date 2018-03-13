@@ -8,7 +8,7 @@ import static java.util.Arrays.*;
 
 import java.awt.List;
 
-public class Student implements Comparable
+public class Student implements Comparable<Student>
 {
 	private String myName;
 	private Grades myGrades;
@@ -90,15 +90,15 @@ public class Student implements Comparable
 		return output;
 	}
 
-	@Override
-	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}	
 	
-	public void sort(){
+	
+	@Override
+	public int compareTo(Student arg0) {
+		if(this.getAverage() > arg0.getAverage()){
+			return 0;
+		}
 		
-		
+		return 1;
 	}
 	
 }

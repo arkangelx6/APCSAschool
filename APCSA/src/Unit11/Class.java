@@ -126,7 +126,7 @@ public class Class
 	public String toString()
 	{
 		String output=""+getClassName()+"\n";
-
+		sort();
 		for(Student x : studentList){
 			output = output + x.toString() + "\n";
 		}
@@ -134,4 +134,24 @@ public class Class
 
 		return output;
 	}  	
+	
+	public void sort(){
+		Student holder;
+		boolean sort =  true;
+		while(sort){
+			sort = false;
+		for(int i = 0; i< studentList.length-1; i++){
+			if(studentList[i].compareTo(studentList[i+1]) == 0){
+				holder = studentList[i];
+				studentList[i] = studentList[i+1];
+				studentList[i+1] = holder;
+				sort = true;
+			}	
+			
+			
+			
+		}
+		}
+		
+	}
 }

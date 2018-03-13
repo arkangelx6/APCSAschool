@@ -47,6 +47,7 @@ public class Grades
 	{
 
 		//grades[spot] = grade;
+		
 		//grades.add(grade);
 		grades.set(spot, grade);
 
