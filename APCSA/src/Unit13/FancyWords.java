@@ -36,6 +36,8 @@ public class FancyWords
 	
 		
 		int holder = 0;
+		
+		
 		for(int i = length.size()-1; i > 0; i--){
 		
 			output = output + list.get(length.get(i)+holder);
@@ -43,9 +45,8 @@ public class FancyWords
 			holder = length.get(i) +holder;
 			
 			
-			
-		}
 		
+		}
 		
 		
 		
