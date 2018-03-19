@@ -1,6 +1,4 @@
-package Unit11;
-
-import Unit11Lab.City;
+package Unit11Lab;
 
 public class State {
 	String stateName;
