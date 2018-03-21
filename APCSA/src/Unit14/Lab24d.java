@@ -17,6 +17,7 @@ public class Lab24d
 		for(int i = 0; i< dataSet; i++){
 			
 			TicTacToe ttt = new TicTacToe(file.nextLine());
+			System.out.println(ttt.getWinner());
 			ttt.toString();
 		}
 
