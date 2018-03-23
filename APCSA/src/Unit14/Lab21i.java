@@ -21,9 +21,11 @@ public class Lab21i
 			
 			if(m.hasExitPath(0, 0)){
 				System.out.println("Has exit path");
+			
 			}
 			else{
 				System.out.println("No exit path");
+				
 			}
 			
 		}

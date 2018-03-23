@@ -33,7 +33,7 @@ public class AtCounter
 			atCount++;
 			atMat[r][c] = 'v';
 			
-			
+		
 			
 			
 			if(r > 0){
@@ -82,15 +82,15 @@ public class AtCounter
 		
 		
 		
-		
-		
-		
-			//for(char[] x : atMat){
-		//	System.out.println(Arrays.toString(x));
+		//for(char[] x : atMat){
+			//System.out.println(Arrays.toString(x));
 			//}
+		
+		
+			
 
 		
-		/*else if(atMat[r][c] == '-'){
+		/*]]else if(atMat[r][c] == '-'){
 			return 0;
 		}*/
 		
