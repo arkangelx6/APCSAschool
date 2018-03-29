@@ -79,7 +79,7 @@ public class Deck {
 	 */
 	public int size() {
 		
-		return cards.length;
+		return size;
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		
 	}
