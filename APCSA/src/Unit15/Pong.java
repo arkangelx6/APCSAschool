@@ -24,7 +24,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private Paddle rightPaddle;
 	private boolean[] keys;
 	private BufferedImage back;
-
+	int player1 = 0;
+	int player2 = 0;
 
 	public Pong()
 	{
@@ -35,9 +36,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		
 		//instantiate a left Paddle
 		
-		leftPaddle = new Paddle(50, 50, 15, 70, Color.GREEN, 5);
+		leftPaddle = new Paddle(50, 50, 15, 100, Color.GREEN, 5);
 		
-		rightPaddle = new Paddle(750, 50, 15, 70, Color.MAGENTA, 5);
+		rightPaddle = new Paddle(750, 50, 15, 100, Color.MAGENTA, 5);
 
 		keys = new boolean[4];
 
@@ -71,17 +72,21 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
-		
-
+		graphToBack.setColor(getBackground());
+		graphToBack.drawString("Player1: " + player1 + " Player2: " + player2, 400, 70);
 		//see if ball hits left wall or right wall
-		if(!(ball.getX()>=10 && ball.getX()<=780))
+		if(!(ball.getX()>=10))
 		{
-			//ball.setXSpeed(0);
-			//ball.setYSpeed(0);
 			ball.setXSpeed(-ball.getXSpeed());
+			player2++;
 			
 		}
-
+		if(!(ball.getX()<=780))
+		{
+			ball.setXSpeed(-ball.getXSpeed());
+			player1++;
+			
+		}
 		
 		//see if the ball hits the top or bottom wall 
 		
@@ -93,24 +98,35 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
 		
 
-		if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth()+ Math.abs(ball.getXSpeed()) && (ball.getY() >= leftPaddle.getY() && ball.getY() <= leftPaddle.getY() +leftPaddle.getHeight() || ball.getY() + ball.getHeight() >= leftPaddle.getY() && ball.getY() +ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight())){
+		/*if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth()+ Math.abs(ball.getXSpeed()) && (ball.getY() >= leftPaddle.getY() && ball.getY() <= leftPaddle.getY() +leftPaddle.getHeight() || ball.getY() + ball.getHeight() >= leftPaddle.getY() && ball.getY() +ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight())){
 			if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed())){
 				ball.setYSpeed(-ball.getYSpeed());
 			}
 			else{
 				ball.setXSpeed(-ball.getXSpeed());
 			}
-		}
+		}*/
 		//see if the ball hits the left paddle
 		
 		
-		
+		if(ball.didCollideRight(leftPaddle)){
+			ball.setXSpeed(-ball.getXSpeed());
+			//System.out.println("right");
+			
+		}
 		//see if the ball hits the right paddle
 		
+		if(ball.didCollideLeft(rightPaddle)){
+			ball.setXSpeed(-ball.getXSpeed());
+			
+			
+		}
 		
-		
-
-
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.drawString("Score: " , 400, 50);
+		graphToBack.drawString("                                                        ", 400, 70);
+		graphToBack.drawString("Player1: " + player1 + " Player2: " + player2, 400, 70);
+		graphToBack.drawString("                                                        ", 400, 70);
 		//see if the paddles need to be moved
 
 

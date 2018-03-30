@@ -8,7 +8,7 @@ package Unit15;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Ball extends Block implements Collidable
 {
 	private int xSpeed;
 	private int ySpeed;
@@ -103,4 +103,64 @@ public class Ball extends Block
     	
     }
    //add a toString() method
+
+	@Override
+	public boolean didCollideLeft(Object obj) {
+		
+		/*if(this.getX() <= ((Block) obj).getX() + ((Block) obj).getWidth() ){
+			if(this.getY() <= ((Block) obj).getY()  &&  this.getY() >= ((Block) obj).getY() + ((Block) obj).getHeight())
+			//return true;
+			
+		}*/
+		
+		//System.out.println("paddle: " +((Block) obj).getX());
+		//System.out.println("ball: " + this.getX());
+		
+			
+			
+			if(this.getY() >= ((Block) obj).getY()
+			&& this.getY()<= ((Block) obj).getY() + ((Block) obj).getHeight()
+			&& this.getX() < ((Block) obj).getX() + ((Block) obj).getWidth()
+			&& this.getX() + this.getWidth() >= ((Block) obj).getX()){
+				return true;
+			}
+			
+		
+		
+		
+		return false;
+		
+		
+		
+	}
+
+	@Override
+	public boolean didCollideRight(Object obj) {
+		// TODO Auto-generated method stub
+		
+		
+		
+			if(this.getY() >= ((Block) obj).getY() &&
+				this.getY() + this.getHeight() <= ((Block) obj).getY() + ((Block) obj).getHeight() &&
+				this.getX() < ((Block) obj).getX() + ((Block) obj).getWidth()
+				&& this.getX() + this.getWidth() >= ((Block) obj).getX() ){
+				return true;
+			}
+			
+		
+		
+		return false;
+	}
+
+	@Override
+	public boolean didCollideTop(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean didCollideBottom(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
