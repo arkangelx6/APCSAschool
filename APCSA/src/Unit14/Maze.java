@@ -34,18 +34,20 @@ public class Maze
 		}
 		
 		//System.out.println(Arrays.toString(m));
-		for(int[] x : maze){
-			System.out.println(Arrays.toString(x));
-		}
+		
 
 	}
 
-	
+
 	public boolean hasExitPath(int r, int c)
 	{
-		if(r == maze.length-1){
-			return true;
+		
+		if(maze[r][maze.length-1] == 3){
+				
+		
+			
 		}
+		
 		//if(maze[r][c] == 1){
 		else{	
 			
@@ -57,17 +59,17 @@ public class Maze
 			if(maze[r-1][c] == 1){
 				
 				
-				return hasExitPath(r-1, c);
+				hasExitPath(r-1, c);
 				
 				
 			}
 			}
-			if(r < maze.length){
+			if(r < maze.length-1){
 				if(maze[r+1][c] == 1){
 					
 					
 					
-				return hasExitPath(r+1, c);
+				hasExitPath(r+1, c);
 					
 			}
 			}
@@ -77,16 +79,16 @@ public class Maze
 				if(maze[r][c-1] == 1){
 					
 					
-				return hasExitPath(r, c-1);
+				hasExitPath(r, c-1);
 					
 			}
 			}
 			
-			if(c < maze.length){
+			if(c < maze.length-1){
 				if(maze[r][c+1] == 1){
 					
 					
-				return hasExitPath(r, c+1);
+				hasExitPath(r, c+1);
 				
 			}
 			}
@@ -97,11 +99,24 @@ public class Maze
 		}
 		
 		
+		/*for(int[] x : maze){
+			System.out.println(Arrays.toString(x));
+		}*/
+
+		
+		//System.out.println();
+		for(int p = 0; p < maze.length; p++){
+		if(maze[p][maze.length-1] == 3){
+			
+			return true;
+			
+		}
 		
 		
-		
-		
+		}
 		return false;
+		
+		
 	}
 
 	public String toString()
@@ -109,8 +124,7 @@ public class Maze
 		String output="";
 
 	
-
-
+	
 
 		return output;
 	}
