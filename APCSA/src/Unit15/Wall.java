@@ -1,5 +1,5 @@
 package Unit15;
 
-public class Wall {
+public class Wall extends Block{
 
 }
