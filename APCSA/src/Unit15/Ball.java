@@ -1,9 +1,7 @@
+
 package Unit15;
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,39 +19,37 @@ public class Ball extends Block implements Collidable
 	}
 
 	//add the other Ball constructors
-	
-	public Ball(int x, int y){
-		super(x, y);
-		
-	}
-	public Ball(int x, int y, int w, int h){
+	public Ball(int x, int y, int w, int h) {
 		super(x, y, w, h);
+
+	}
+	public Ball(int x, int y, int w, int h, Color c) {
+		super(x, y, w, h, c);
+
+	}
+	public Ball(int x, int y, int w, int h, Color c, int xS, int yS) {
+		super(x, y, w, h, c);
+		xSpeed = xS;
+		ySpeed = yS;
+	}
+	public Ball(int xS, int yS) {
+		
+		xSpeed = xS;
+		ySpeed = yS;
 		
 	}
-	public Ball(int x, int y, Color c){
-		super(x, y, c);
-	}
-	public Ball(int x, int y, int w, int h, Color c){
-		super(x, y, w, h, c);
-	}
-	public Ball(int x, int y, int w, int h, Color c, int xS, int yS){
-		super(x, y, w, h, c);
+	
+	
+	
+	public void setXSpeed(int xS) {
 		xSpeed = xS;
+	}
+	
+	public void setYSpeed(int yS) {
 		ySpeed = yS;
 	}
 	
 	
-	
-	
-	
-	
-	
-	public void setXSpeed(int xS){
-		xSpeed = xS;
-	}
-	public void setYSpeed(int yS){
-		ySpeed = yS;
-	}
 	
 	
 	   
@@ -63,104 +59,95 @@ public class Ball extends Block implements Collidable
    public void moveAndDraw(Graphics window)
    {
    	//draw a white ball at old ball location
-	   window.setColor(Color.WHITE);
-	   window.fillOval(getX(), getY(), getWidth(), getHeight());
-
-      setX(getX()+xSpeed);
+	   window.setColor(Color.white);
+	   //window.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+	   window.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+      super.setX(getX()+xSpeed);
 		//setY
-      setY(getY()+ySpeed);
+      super.setY(getY()+ySpeed);
 		//draw the ball at its new location
       window.setColor(super.getColor());
-	   window.fillOval(getX(), getY(), getWidth(), getHeight());
+      //window.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+      window.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
    }
    
 	public boolean equals(Object obj)
 	{
 
-		if(this == obj){
+		if(this == obj) {
 			return true;
 		}
 
-
 		return false;
 	}   
-	public int getXSpeed(){
-		return xSpeed;
-	}
-	public int getYSpeed(){
+
+   //add the get methods
+	public int getYSpeed() {
+		
 		return ySpeed;
 	}
-
+	public int getXSpeed() {
 	
-	
-   //add the get methods
-	public String toString(){
-    	String output = "";
-    	output += "x: " + getX() + " y: " + getY() + " width: " + getWidth() + " height: " + getHeight() + " color: " + getColor();
-    	output += " xSpeed: " + getXSpeed() + " ySpeed: "+ getYSpeed();		
-    	
-    	return output;
-    	
-    }
+	return xSpeed;
+	}
    //add a toString() method
-
-	@Override
-	public boolean didCollideLeft(Object obj) {
+	public String toString() {
 		
-		/*if(this.getX() <= ((Block) obj).getX() + ((Block) obj).getWidth() ){
-			if(this.getY() <= ((Block) obj).getY()  &&  this.getY() >= ((Block) obj).getY() + ((Block) obj).getHeight())
-			//return true;
-			
-		}*/
+		String output = "";
 		
-		//System.out.println("paddle: " +((Block) obj).getX());
-		//System.out.println("ball: " + this.getX());
-		
-			
-			
-			if(this.getY() >= ((Block) obj).getY()
-			&& this.getY()<= ((Block) obj).getY() + ((Block) obj).getHeight()
-			&& this.getX() < ((Block) obj).getX() + ((Block) obj).getWidth()
-			&& this.getX() + this.getWidth() >= ((Block) obj).getX()){
-				return true;
-			}
-			
-		
-		
-		
-		return false;
-		
-		
-		
+		output += "x: " +getX() + " y: " + getY() + " width: " + getWidth() + " height: " + getHeight() + " Color: " + getColor();
+		output += " xS: " +getXSpeed() + " yS: " + getYSpeed();
+		return output;
 	}
 
-	@Override
-	public boolean didCollideRight(Object obj) {
-		// TODO Auto-generated method stub
-		
-		
-		
-			if(this.getY() >= ((Block) obj).getY() &&
-				this.getY() + this.getHeight() <= ((Block) obj).getY() + ((Block) obj).getHeight() &&
-				this.getX() < ((Block) obj).getX() + ((Block) obj).getWidth()
-				&& this.getX() + this.getWidth() >= ((Block) obj).getX() ){
-				return true;
-			}
-			
-		
-		
-		return false;
-	}
+@Override
+public boolean didCollideLeft(Object obj) {
 
-	@Override
-	public boolean didCollideTop(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+	if(this.getY()+this.getHeight()  >= ((Block) obj).getY() &&
+		this.getY()+this.getHeight()  <= 	((Block) obj).getY() + ((Block) obj).getHeight() &&
+		this.getX() <= ((Block) obj).getX() &&
+		this.getX() >= ((Block) obj).getX() - ((Block) obj).getWidth())
+			 {
+		return true;
 	}
+	
+	
+	return false;
+}
 
-	@Override
-	public boolean didCollideBottom(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+@Override
+public boolean didCollideRight(Object obj) {
+	if(this.getY() +this.getHeight() >= ((Block) obj).getY() &&
+			this.getY() +this.getHeight() <= ((Block) obj).getY() + ((Block) obj).getHeight() &&
+			this.getX() <= ((Block) obj).getX() + ((Block) obj).getWidth() &&
+			this.getX() >= ((Block) obj).getX())
+				 {
+			return true;
+		}
+	return false;
+}
+
+@Override
+public boolean didCollideTop(Object obj) {
+	if(this.getX()+this.getWidth()  >= ((Block) obj).getX() &&
+			this.getX()+this.getWidth()  <= ((Block) obj).getX() + ((Block) obj).getWidth() &&
+			this.getY() <= ((Block) obj).getY() &&
+			this.getY() >= ((Block) obj).getY() - ((Block) obj).getHeight())
+				 {
+			return true;
+		}
+	return false;
+}
+
+@Override
+public boolean didCollideBottom(Object obj) {
+	if(this.getX() +this.getWidth() >= ((Block) obj).getX() &&
+			this.getX() +this.getWidth() <= ((Block) obj).getX() + ((Block) obj).getWidth() &&
+			this.getY() <= ((Block) obj).getY() + ((Block) obj).getHeight() &&
+			this.getY() >= ((Block) obj).getY())
+				 {
+			return true;
+		}
+	return false;
+}
 }
