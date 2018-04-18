@@ -68,7 +68,7 @@ public class SimplePicture implements DigitalPicture
   */
  public SimplePicture(String fileName)
  {
-	String file = "src\\Pic\\images\\" + fileName;
+	String file = "src\\Unit16\\images\\" + fileName;
    // load the picture into the buffered image 
    load(file);
    
@@ -512,7 +512,7 @@ public class SimplePicture implements DigitalPicture
  /**
   * Method to draw a message as a string on the buffered image 
   * @param message the message to draw on the buffered image
-  * @param xPos  the x coordinate of the leftmost point of the string 
+  * @param xPos  the x coordinate of the most point of the string 
   * @param yPos  the y coordinate of the bottom of the string  
   */
  public void addMessage(String message, int xPos, int yPos)
@@ -534,7 +534,7 @@ public class SimplePicture implements DigitalPicture
  /**
   * Method to draw a string at the given location on the picture
   * @param text the text to draw
-  * @param xPos the left x for the text 
+  * @param xPos the  x for the text 
   * @param yPos the top y for the text
   */
  public void drawString(String text, int xPos, int yPos)
@@ -675,7 +675,7 @@ public class SimplePicture implements DigitalPicture
  }*/
  public boolean write(String fileName)
  {
-	 String file = "src\\Pic\\images\\" + fileName;
+	 String file = "src\\Unit16\\images\\" + fileName;
      try {
          this.writeOrFail(file);
          return true;

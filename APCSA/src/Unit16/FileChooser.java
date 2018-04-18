@@ -1,5 +1,4 @@
 package Unit16;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import java.util.Properties;
