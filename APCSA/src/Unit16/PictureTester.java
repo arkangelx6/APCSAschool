@@ -52,6 +52,62 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+  public static void testKeepOnlyBlue()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.explore();
+    swan.keepOnlyBlue();
+    swan.explore();
+  }
+  public static void testNegate()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.explore();
+    swan.negate();
+    swan.explore();
+  }
+  public static void testGrayscale()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.explore();
+    swan.grayscale();
+    swan.explore();
+  }
+  public static void testFixUnderwater()
+  {
+    Picture water = new Picture("water.jpg");
+    water.explore();
+    water.underwater();
+    water.explore();
+  }
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVerticalRightToLeft();
+    caterpillar.explore();
+  }
+  public static void testMirrorHorizontal()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontal();
+    caterpillar.explore();
+  }
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.explore();
+    swan.mirrorHorizontalBotToTop();
+    swan.explore();
+  }
+  public static void testMirrorArms()
+  {
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms();
+    snowman.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -60,16 +116,19 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
-    //testKeepOnlyBlue();
+    //testZeroBlue();
+   // testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
+	 // testMirrorVerticalRightToLeft();
     //testNegate();
     //testGrayscale();
-    //testFixUnderwater();
+   // testFixUnderwater();
     //testMirrorVertical();
+	 // testMirrorHorizontal();
+	 // testMirrorHorizontalBotToTop();
     //testMirrorTemple();
-    //testMirrorArms();
+    testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
@@ -83,4 +142,6 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
   }
+
+
 }
