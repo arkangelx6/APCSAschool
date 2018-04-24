@@ -44,6 +44,33 @@ public class PictureTester
     canvas.createCollage();
     canvas.explore();
   }
+  public static void testCopy()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    Picture temple = new Picture("temple.jpg");
+    canvas.createCollage();
+    canvas.copy2(temple, 5, 200, 50, 200);
+    canvas.explore();
+  }
+  public static void myCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    Picture temple = new Picture("temple.jpg");
+    canvas.createCollage();
+    canvas.copy2(temple, 5, 200, 50, 200);
+    Picture swan = new Picture("swan.jpg");
+    swan.mirrorHorizontal();
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture snowman = new Picture("snowman.jpg");
+    canvas.copy(snowman, 60, 10);
+    canvas.copy2(swan, 30, 140, 30, 160);
+    canvas.copy(caterpillar, 10, 120);
+    
+    canvas.mirrorHorizontalBotToTop();
+    canvas.mirrorVertical();
+    canvas.explore();
+  }
+  
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -108,6 +135,23 @@ public class PictureTester
     snowman.mirrorArms();
     snowman.explore();
   }
+  public static void testMirrorGull()
+  {
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.mirrorGull();
+    seagull.explore();
+  }
+  public static void testBlur()
+  {
+    Picture flower = new Picture("redMotorcycle.jpg");
+    flower.explore();
+    flower.blur(25, 25, 400, 400);
+    flower.blur(25, 25, 400, 400);
+    flower.blur(25, 25, 400, 400);
+    flower.blur(25, 25, 400, 400);
+    flower.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -117,7 +161,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-   // testKeepOnlyBlue();
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
 	 // testMirrorVerticalRightToLeft();
@@ -128,11 +172,13 @@ public class PictureTester
 	 // testMirrorHorizontal();
 	 // testMirrorHorizontalBotToTop();
     //testMirrorTemple();
-    testMirrorArms();
+     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
+	  //myCollage();
+	  testBlur();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();

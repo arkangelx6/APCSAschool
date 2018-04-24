@@ -175,6 +175,23 @@ public class Picture extends SimplePicture
       }
     }   
   }
+  
+  
+	public void copy2(Picture fromPic, int startRow, int endRow, int startCol, int endCol) {
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = fromPic.getPixels2D();
+		for (int fromRow = 0, toRow = startRow; fromRow < endRow
+				&& toRow < endRow; fromRow++, toRow++) {
+			for (int fromCol = 0, toCol = startCol; fromCol < endCol
+					&& toCol < endCol; fromCol++, toCol++) {
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+				toPixel.setColor(fromPixel.getColor());
+			}
+		}
+	}
 
   /** Method to create a collage of several pictures */
   public void createCollage()
@@ -319,7 +336,14 @@ public class Picture extends SimplePicture
 	      }
 	    }  
   }
-  public void mirrorArms()
+  
+  public void mirrorArms() {
+	  mirrorArms1();
+	  mirrorArms2();
+  }
+  
+  
+  public void mirrorArms1()
   {
     int mirrorPoint = 192;
     Pixel leftPixel = null;
@@ -331,24 +355,109 @@ public class Picture extends SimplePicture
     for (int row = 155; row < mirrorPoint; row++)
     {
       // loop from 13 to just before the mirror point
-      for (int col = 100; col < 166; col++)
+      for (int col = 100; col < 170; col++)
       {
         leftPixel = pixels[row][col];      
         rightPixel = pixels[mirrorPoint - row +mirrorPoint][col];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
-    
   }
+  public void mirrorArms2()
+  {
+    int mirrorPoint = 192;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 168; row < mirrorPoint; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 239; col < 297; col++)
+      {
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[mirrorPoint - row +mirrorPoint][col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
+  public void mirrorGull() {
+	  int mirrorPoint = 342;
+	    Pixel leftPixel = null;
+	    Pixel rightPixel = null;
+	    
+	    Pixel[][] pixels = this.getPixels2D();
+	    
+	    // loop through the rows
+	    for (int row = 226; row < 332; row++)
+	    {
+	      // loop from 13 to just before the mirror point
+	      for (int col = 235; col < mirrorPoint; col++)
+	      {
+	        leftPixel = pixels[row][col];      
+	        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+	        rightPixel.setColor(leftPixel.getColor());
+	      }
+	    }
+  }
+  
+  public void blur(int x, int y, int height, int width){
+	  
+	    Pixel pixelObj = null;
+	    Pixel pixelObj2 = null;
+	    Pixel pixelObj3 = null;
+	    Pixel pixelObj4 = null;
+	    Pixel pixelObj5 = null;
+	    Pixel[][] pixels = this.getPixels2D();
+	    
+	   int colorTotalRed = 0;
+	   int colorTotalGreen = 0;
+	  int colorTotalBlue = 0;
+	 
+	   
+	    for (int row = x; row < height-4; row++)
+	    {
+	      
+	      for (int col = y; col < width-4; col++)
+	      {
+	    	pixelObj = pixels[row][col]; 
+	    	pixelObj2 = pixels[row+1][col];
+	    	pixelObj3 = pixels[row-1][col];
+	    	pixelObj4 = pixels[row][col+1];
+	    	pixelObj5 = pixels[row][col-1];
+	    	colorTotalRed = (pixelObj.getRed() + pixelObj2.getRed() + pixelObj3.getRed() + pixelObj4.getRed() + pixelObj5.getRed())/5;
+	    	colorTotalGreen = (pixelObj2.getGreen() + pixelObj3.getGreen() + pixelObj4.getGreen() +pixelObj5.getGreen() + pixelObj.getGreen())/5;
+	    	colorTotalBlue = (pixelObj2.getBlue() + pixelObj3.getBlue() + pixelObj4.getBlue() + pixelObj5.getBlue() + pixelObj.getBlue())/5;
+	    	
+	    	
+	        pixelObj.setRed(colorTotalRed);
+	        pixelObj.setGreen(colorTotalGreen);
+	       	pixelObj.setBlue(colorTotalBlue);
+	      
+	      }
+	    }
+	    
+	   
+  }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    /*Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.zeroBlue();
-    beach.explore();
+    beach.explore();*/
+	  Picture flower = new Picture("redMotorcycle.jpg");
+	    flower.explore();
+	    flower.blur(25, 25, 400, 400);
+	    flower.blur(25, 25, 400, 400);
+	    flower.blur(25, 25, 400, 400);
+	    flower.blur(25, 25, 400, 400);
+	    flower.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this
