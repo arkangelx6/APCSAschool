@@ -25,10 +25,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienTwo;
 	
 
-	/* uncomment once you are ready for this part
-	 *
+	// uncomment once you are ready for this part
+	
 	private ArrayList<Alien> aliens;
-	*/
+	
 	private ArrayList<Ammo> shots;
 	Ammo ammo1;
 
@@ -43,10 +43,16 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		keys = new boolean[5];
 
 		//instantiate other stuff
-		ship = new Ship(200, 200, 5);
+		ship = new Ship(200, 200, 3);
 		
-		alienOne = new Alien(50, 50, 2);
-		alienTwo = new Alien(50, 100, 2);
+		//alienOne = new Alien(50, 50, 2);
+		//alienTwo = new Alien(50, 100, 2);
+		
+		aliens = new ArrayList<Alien>();
+		for(int i = 0; i < 5; i++){
+			aliens.add(new Alien((int)(Math.random()*700+50),(int)( Math.random()*300+50), 2));
+		}
+		
 		
 		
 		shots = new ArrayList<Ammo>();
@@ -68,7 +74,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
    }
    boolean left = false;
    int counter = 0;
-   
+   int score = 0;
 	public void paint( Graphics window )
 	{
 		//set up the double buffering to make the game animation nice and smooth
@@ -88,10 +94,64 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
 		ship.draw(graphToBack);
+		graphToBack.setColor(Color.PINK);
+		graphToBack.drawString("Score: " + score, 35, 15);
 		
 		
 		
-	
+		
+		
+		
+		
+		
+		for(int i = 0; i < aliens.size(); i++){
+		if(left){
+			if(aliens.get(i).getX() >= 0 && aliens.get(i).getX() <= 700){
+				aliens.get(i).move("LEFT");
+				}
+			}
+			if(left == false){
+				if(aliens.get(i).getX() >= 0 && aliens.get(i).getX() <= 700){
+					aliens.get(i).move("RIGHT");
+				}
+			}
+			
+			if(aliens.get(i).getX() <= 20){
+				//System.out.println("not left");
+				left = false;
+				aliens.get(i).setPos((int)(Math.random()*700+50),(int)( Math.random()*300+50));
+			}
+			if(aliens.get(i).getX() >= 680){
+				//System.out.println("left");
+				left = true;
+				aliens.get(i).setPos((int)(Math.random()*700+50),(int)( Math.random()*300+50));
+			}
+			
+			
+			
+			
+		}
+		
+		for(int i = 0; i< aliens.size(); i++){
+			aliens.get(i).draw(graphToBack);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*
 		if(left){
 		if(alienOne.getX() >= 0 && alienOne.getX() <= 700){
 			alienOne.move("LEFT");
@@ -113,8 +173,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 		
 		alienOne.draw(graphToBack);
-		alienTwo.draw(graphToBack);
-		
+		//alienTwo.draw(graphToBack);
+		*/
 		
 			
 		for(int i = 0; i < shots.size()-1; i++){
@@ -178,12 +238,42 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		
 		//add code to move stuff
-
-
-		//add in collision detection
-		if(shots.get(counter).getY() == alienOne.getY() && shots.get(x) == alienOne.getX()){
+		if(counter >= 1){
 			
+			for(int i = 0; i < aliens.size(); i++){
+				if((shots.get(counter-1).getY() >= aliens.get(i).getY() && shots.get(counter-1).getY() <= aliens.get(i).getY()+80)
+						&& (shots.get(counter-1).getX() >= aliens.get(i).getX() && shots.get(counter-1).getX() <= aliens.get(i).getX()+80)){
+					aliens.get(i).setX(4000);
+					score++;
+					//System.out.println("hit");
+				}
+				}
+			
+		System.out.println(shots.get(counter-1).getY());
 		}
+		else{
+			for(int i = 0; i < aliens.size(); i++){
+				if((shots.get(8).getY() >= aliens.get(i).getY() && shots.get(8).getY() <= aliens.get(i).getY()+80)
+						&& (shots.get(8).getX() >= aliens.get(i).getX() && shots.get(8).getX() <= aliens.get(i).getX()+80)){
+					aliens.get(i).setX(4000);
+					score++;
+					//System.out.println("hit");
+				}
+				}
+			//System.out.println(shots.get(8).getY());	
+		}
+		//System.out.println(counter);
+		//System.out.println("Alien: " + alienOne.getX());
+		//add in collision detection
+		/*if((ship.getY() >= alienOne.getY() && ship.getY() <= alienOne.getY()+80) && (ship.getX() >= alienOne.getX() && ship.getX() <= alienOne.getX()+80)){
+			ship.setX(400);
+			
+			System.out.println("hit");
+		}*/
+		
+		
+		
+		
 
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
